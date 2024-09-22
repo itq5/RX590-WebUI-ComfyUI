@@ -1,0 +1,4 @@
+data/*
+cache/*
+outputs/*
+.DS_Store
