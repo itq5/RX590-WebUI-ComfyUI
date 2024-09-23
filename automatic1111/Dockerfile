@@ -260,4 +260,4 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 7860
 
 ENTRYPOINT ["python3", "launch.py", "--data-dir", "/stable-diffusion-webui/data", "--listen", "--port", "7860"]
-CMD ["--precision", "full", "--no-half", "--medvram", "--enable-insecure-extension-access", "--api", "--opt-sdp-no-mem-attention"]
+#CMD ["--precision", "full", "--no-half", "--medvram", "--enable-insecure-extension-access", "--api", "--opt-sdp-no-mem-attention"]

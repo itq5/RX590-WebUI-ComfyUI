@@ -2,12 +2,14 @@ version: "3.9"
 services:
   automatic1111:
     build: automatic1111
+    command: "--precision full --no-half --medvram --medvram-sdxl --xformers --enable-insecure-extension-access --api --opt-sdp-no-mem-attention"
+    # --lowvram --always-batch-cond-uncond
     network_mode: host
     devices:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
     ipc: host
-    shm_size: "16G"
+    shm_size: "32G"
     group_add: 
       - video
     cap_add:
@@ -28,7 +30,7 @@ services:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
     ipc: host
-    shm_size: "16G"
+    shm_size: "32G"
     group_add: 
       - video
     cap_add:
