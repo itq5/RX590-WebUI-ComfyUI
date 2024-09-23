@@ -1,7 +1,7 @@
 version: "3.9"
 services:
-  sd:
-    build: .
+  automatic1111:
+    build: automatic1111
     network_mode: host
     devices:
       - /dev/dri:/dev/dri
@@ -21,4 +21,24 @@ services:
       - ./data:/stable-diffusion-webui/data
       - ./data/embeddings:/stable-diffusion-webui/embeddings
       - ./outputs:/stable-diffusion-webui/outputs
-
+  comfyui:
+    build: comfyui
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/kfd:/dev/kfd
+    ipc: host
+    shm_size: "16G"
+    group_add: 
+      - video
+    cap_add:
+      - SYS_ADMIN
+    seccurity_opt:
+      - seccomp:unconfined
+    ports:
+      - "7861:7861"
+    volumes:
+      - ./cache:/root/.cache
+      - ./data:/comfyui/data
+      - ./data/embeddings:/comfyui/embeddings
+      - ./outputs:/comfyui/outputs

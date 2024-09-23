@@ -1,6 +1,6 @@
 # 1. extracted from rocm-xtra-builder-rocblas
 FROM rocm/dev-ubuntu-22.04:5.5.1-complete as rocblas-builder
-
+ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /src
 # downlode rocblas, tensile, rocSPARSE, Magma
 RUN --mount=type=cache,target=/tmp/cache/download,rw \
@@ -27,14 +27,15 @@ RUN --mount=type=cache,target=/tmp/cache/download,rw \
 # install deps
 RUN --mount=type=cache,target=/var/cache/apt,rw --mount=type=cache,target=/var/lib/apt,rw \
     apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get download rocblas \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    && apt-get download rocblas \
+    && apt-get install -y --no-install-recommends \
         gfortran \
         make \
         pkg-config \
         libnuma1 \
         cmake \
         git \
+        wget \
         python3-dev \
         python3-venv \
         python-is-python3 \
@@ -70,7 +71,7 @@ COPY patches /patches
 RUN patch -Np1 -d /src/Tensile-rocm-5.5.1 -i /patches/Tensile-fix-fallback-arch-build.patch
 RUN patch -Np1 -d /src/rocBLAS-rocm-5.5.1 -i /patches/rocBLAS-configure-but-dont-build.patch
 
-RUN DEBIAN_FRONTEND=noninteractive ./install.sh \
+RUN ./install.sh \
         --cmake_install \
         --dependencies \
         --test_local_path /src/Tensile-rocm-5.5.1 \
@@ -253,14 +254,10 @@ COPY ./rocm-xtra-setup.py .
 
 RUN python3 rocm-xtra-setup.py --skip-torch-cuda-test
 
-VOLUME /root/.cache
-
 RUN mkdir -p /stable-diffusion-webui/data
-VOLUME /stable-diffusion-webui/data
-VOLUME /stable-diffusion-webui/outputs
 
 ENV PYTHONUNBUFFERED=1
 EXPOSE 7860
 
-ENTRYPOINT ["python3", "launch.py", "--data-dir", "/stable-diffusion-webui/data", "--listen", "--port", "7860", "--precision", "full", "--no-half", "--medvram", "--enable-insecure-extension-access", "--api"]
-CMD ["--opt-sdp-no-mem-attention"]
+ENTRYPOINT ["python3", "launch.py", "--data-dir", "/stable-diffusion-webui/data", "--listen", "--port", "7860"]
+CMD ["--precision", "full", "--no-half", "--medvram", "--enable-insecure-extension-access", "--api", "--opt-sdp-no-mem-attention"]
