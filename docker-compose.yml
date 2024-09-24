@@ -2,8 +2,8 @@ version: "3.9"
 services:
   automatic1111:
     build: automatic1111
-    command: "--precision full --no-half --medvram --medvram-sdxl --xformers --enable-insecure-extension-access --api --opt-sdp-no-mem-attention"
-    # --lowvram --always-batch-cond-uncond
+    command: "--precision full --no-half --lowvram --always-batch-cond-uncond --enable-insecure-extension-access --api --opt-sdp-no-mem-attention"
+    # --medvram --medvram-sdxl --xformers
     network_mode: host
     devices:
       - /dev/dri:/dev/dri
