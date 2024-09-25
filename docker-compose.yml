@@ -16,6 +16,8 @@ services:
       - SYS_ADMIN
     seccurity_opt:
       - seccomp:unconfined
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - "7860:7860"
     volumes:
@@ -37,6 +39,8 @@ services:
       - SYS_ADMIN
     seccurity_opt:
       - seccomp:unconfined
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - "7861:7861"
     volumes:
