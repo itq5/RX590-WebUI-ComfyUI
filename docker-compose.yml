@@ -3,7 +3,7 @@ services:
   automatic1111:
     build: automatic1111
     command: "--precision full --no-half --lowvram --always-batch-cond-uncond --enable-insecure-extension-access --api --opt-sdp-no-mem-attention"
-    # --medvram --medvram-sdxl --xformers
+    # --medvram --medvram-sdxl
     network_mode: host
     devices:
       - /dev/dri:/dev/dri
