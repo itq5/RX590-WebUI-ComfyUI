@@ -2,7 +2,7 @@ services:
   automatic1111:
     #build: automatic1111
     image: ulyssesrr/rocm-xtra-stable-diffusion-webui:1.6.0_rocm5.5.1_ubuntu22.04_pytorch2.0.1
-    command: "--lowvram --enable-insecure-extension-access --api --opt-sub-quad-attention --disable-nan-check --upcast-sampling --skip-torch-cuda-test"
+    command: "--lowvram --enable-insecure-extension-access --api --skip-torch-cuda-test"
     # --medvram --medvram-sdxl if you have 8gb vram
     devices:
       - /dev/dri:/dev/dri
