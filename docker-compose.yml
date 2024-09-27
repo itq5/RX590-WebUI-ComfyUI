@@ -2,13 +2,12 @@ services:
   automatic1111:
     #build: automatic1111
     image: ulyssesrr/rocm-xtra-stable-diffusion-webui:1.6.0_rocm5.5.1_ubuntu22.04_pytorch2.0.1
-    command: "--medvram --enable-insecure-extension-access --api --opt-sub-quad-attention --disable-nan-check --upcast-sampling --sub-quad-q-chunk-size 512 --sub-quad-kv-chunk-size 512 --sub-quad-chunk-threshold 80 --skip-torch-cuda-test"
-    # --medvram --medvram-sdxl --precision full --no-half
+    command: "--lowvram --enable-insecure-extension-access --api --opt-sub-quad-attention --disable-nan-check --upcast-sampling --skip-torch-cuda-test"
+    # --medvram --medvram-sdxl if you have 8gb vram
     devices:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
     ipc: host
-    shm_size: "32G"
     group_add: 
       - video
     cap_add:
