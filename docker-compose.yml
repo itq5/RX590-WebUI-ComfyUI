@@ -2,8 +2,8 @@ services:
   automatic1111:
     #build: automatic1111
     image: ulyssesrr/rocm-xtra-stable-diffusion-webui:1.6.0_rocm5.5.1_ubuntu22.04_pytorch2.0.1
-    command: "--lowvram --enable-insecure-extension-access --api"
-    # --medvram --medvram-sdxl --precision full --no-half --always-batch-cond-uncond
+    command: "--lowvram --enable-insecure-extension-access --api --opt-sub-quad-attention --disable-nan-check --upcast-sampling"
+    # --medvram --medvram-sdxl --precision full --no-half
     devices:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
