@@ -1,6 +1,7 @@
 services:
   automatic1111:
-    build: automatic1111
+    #build: automatic1111
+    image: ulyssesrr/rocm-xtra-stable-diffusion-webui1.6.0_rocm5.5.1_ubuntu22.04_pytorch2.0.1
     command: "--precision full --no-half --lowvram --always-batch-cond-uncond --enable-insecure-extension-access --api --opt-sdp-no-mem-attention"
     # --medvram --medvram-sdxl
     network_mode: host
