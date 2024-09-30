@@ -23,7 +23,7 @@ RUN source venv/bin/activate
 
 RUN pip install -r requirements.txt
 
-COPY files .
+COPY rocm-xtra-setup.py .
 
 RUN python3 rocm-xtra-setup.py --skip-torch-cuda-test
 
