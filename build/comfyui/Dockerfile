@@ -13,7 +13,7 @@ WORKDIR /
 RUN git clone https://github.com/arlo-phoenix/bitsandbytes-rocm-5.6 /bitsandbytes && \
     cd /bitsandbytes && \
     git checkout 62353b0200b8557026c176e74ac48b84b953a854 && \
-    make hip ROCM_TARGET=gfx803,gfx900,gfx906,gfx908,gfx90a,gfx1030,gfx1100,gfx1101,gfx940,gfx941,gfx942 ROCM_HOME=/opt/rocm/ && \
+    make hip ROCM_TARGET=gfx803,gfx900,gfx906,gfx908,gfx90a,gfx1030,gfx1100,gfx1101,gfx940 ROCM_HOME=/opt/rocm/ && \
     pip install . 
 
 # To upgrade to the higher version, you need to wait for the problem to be resolved
