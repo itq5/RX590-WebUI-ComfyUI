@@ -44,4 +44,5 @@ RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED=1
 EXPOSE 7861
 
-ENTRYPOINT ["python3", "main.py", "--listen", "0.0.0.0", "--port", "7861"]
+ENTRYPOINT ["python3", "main.py"]
+CMD ["--listen", "--port", "7861"]
