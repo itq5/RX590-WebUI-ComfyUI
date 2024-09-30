@@ -26,7 +26,7 @@ services:
       - ./Automatic1111/outputs:/stable-diffusion-webui/outputs
   comfyui:
     build: ./build/comfyui
-    command: "--lowvram"
+    command: "--listen --port 7861 --lowvram"
     devices:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
@@ -41,6 +41,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - "7861:7861"
+      - "8166:8166"
     volumes:
       - ./ComfyUI/cache:/root/.cache
       - ./ComfyUI/data:/comfyui/data
