@@ -23,24 +23,24 @@ services:
       - ./Automatic1111/data:/stable-diffusion-webui/data
       - ./Automatic1111/data/embeddings:/stable-diffusion-webui/embeddings
       - ./Automatic1111/outputs:/stable-diffusion-webui/outputs
-  comfyui:
-    build: ./build/comfyui
-    devices:
-      - /dev/dri:/dev/dri
-      - /dev/kfd:/dev/kfd
-    ipc: host
-    group_add: 
-      - video
-    cap_add:
-      - SYS_ADMIN
-    security_opt:
-      - seccomp:unconfined
-    labels:
-      - "com.centurylinklabs.watchtower.enable=false"
-    ports:
-      - "7861:7861"
-    volumes:
-      - ./ComfyUI/cache:/root/.cache
-      - ./ComfyUI/data:/comfyui/data
-      - ./ComfyUI/data/embeddings:/comfyui/embeddings
-      - ./ComfyUI/outputs:/comfyui/outputs
+  # comfyui:
+  #   build: ./build/comfyui
+  #   devices:
+  #     - /dev/dri:/dev/dri
+  #     - /dev/kfd:/dev/kfd
+  #   ipc: host
+  #   group_add: 
+  #     - video
+  #   cap_add:
+  #     - SYS_ADMIN
+  #   security_opt:
+  #     - seccomp:unconfined
+  #   labels:
+  #     - "com.centurylinklabs.watchtower.enable=false"
+  #   ports:
+  #     - "7861:7861"
+  #   volumes:
+  #     - ./ComfyUI/cache:/root/.cache
+  #     - ./ComfyUI/data:/comfyui/data
+  #     - ./ComfyUI/data/embeddings:/comfyui/embeddings
+  #     - ./ComfyUI/outputs:/comfyui/outputs
