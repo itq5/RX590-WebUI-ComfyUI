@@ -1,5 +1,4 @@
-FROM ulyssesrr/rocm-xtra-pytorch:rocm5.5.1_ubuntu22.04_pytorch2.0.1 as rocm-xtra-stable-diffusion-webui
-
+FROM ulyssesrr/rocm-xtra-pytorch:rocm5.5.1_ubuntu22.04_pytorch2.0.1 
 RUN --mount=type=cache,target=/var/cache/apt,rw --mount=type=cache,target=/var/lib/apt,rw \
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     git \
@@ -21,6 +20,7 @@ RUN python3 -m venv venv --system-site-packages
 
 RUN source venv/bin/activate
 
+RUN pip install -r requirements_versions.txt
 RUN pip install -r requirements.txt
 
 COPY rocm-xtra-setup.py .
