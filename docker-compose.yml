@@ -37,7 +37,7 @@ services:
       - ./Automatic1111/outputs:/stable-diffusion-webui/outputs
   comfyui:
     build: ./build/comfyui
-    command: "--listen --port 7861 --preview-method auto --use-split-cross-attention"
+    command: "--listen --port 7861 --preview-method auto --use-quad-cross-attention"
     # --use-quad-cross-attention --use-pytorch-cross-attention
     devices:
       - /dev/dri:/dev/dri
@@ -71,3 +71,15 @@ services:
       - ./ComfyUI/user:/comfyui/user
       - ./ComfyUI/config:/comfyui/config
       - ./ComfyUI/outputs:/comfyui/output
+  iib:
+    build: ./build/iib
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+    ports:
+      - "7862:7862"
+    environement:
+      - PORT=7862
+      - EXTRA_PATHS=/automatic1111,/comfyui
+    volumes:
+      - ./ComfyUI/outputs:/comfyui
+      - ./Automatic1111/data/outputs:/automatic1111
