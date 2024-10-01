@@ -77,7 +77,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - "7862:7862"
-    environement:
+    environment:
       - PORT=7862
       - EXTRA_PATHS=/automatic1111,/comfyui
     volumes:
