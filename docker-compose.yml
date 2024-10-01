@@ -2,7 +2,7 @@ services:
   automatic1111:
     build: ./build/automatic1111
     #image: ulyssesrr/rocm-xtra-stable-diffusion-webui:1.6.0_rocm5.5.1_ubuntu22.04_pytorch2.0.1
-    command: "--lowvram --enable-insecure-extension-access --api --skip-torch-cuda-test --opt-sub-quad-attention --sub-quad-q-chunk-size 512 --sub-quad-kv-chunk-size 512 --sub-quad-chunk-threshold 80 --upcast-sampling"
+    command: "--lowvram --enable-insecure-extension-access --api --skip-torch-cuda-test --upcast-sampling"
     # --medvram --medvram-sdxl if you have 8gb vram
     # --no-half-vae if you are not using TAESD or sdxl-vae-fp16-fix
     devices:
