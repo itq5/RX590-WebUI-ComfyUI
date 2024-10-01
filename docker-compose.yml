@@ -73,10 +73,12 @@ services:
       - ./ComfyUI/outputs:/comfyui/output
   iib:
     build: ./build/iib
+    command: "--extra_paths /automatic1111 /comfyui --sd_webui_config=/config.json"
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - "7862:8000"
     volumes:
       - ./ComfyUI/outputs:/comfyui
+      - ./Automatic1111/data/config.json:/config.json
       - ./Automatic1111/outputs:/automatic1111

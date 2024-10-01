@@ -33,4 +33,5 @@ COPY entry.sh /usr/local/sbin
 COPY config.json /
 RUN sed -i s_/root_/outputs_ /etc/passwd
 
-ENTRYPOINT [ "sh", "-c", "/usr/local/sbin/entry.sh" ]
+ENTRYPOINT ["python", "app.py"]
+CMD ["--extra_paths /automatic1111"]
