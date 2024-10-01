@@ -22,7 +22,18 @@ services:
     volumes:
       - ./Automatic1111/cache:/root/.cache
       - ./Automatic1111/data:/stable-diffusion-webui/data
-      - ./Automatic1111/data/embeddings:/stable-diffusion-webui/embeddings
+      - ./Models/Codeformer:/stable-diffusion-webui/data/models/Codeformer
+      - ./Models/ESRGAN:/stable-diffusion-webui/data/models/ESRGAN
+      - ./Models/GFPGAN:/stable-diffusion-webui/data/models/GFPGAN
+      - ./Models/hypernetworks:/stable-diffusion-webui/data/models/hypernetworks
+      - ./Models/LDSR:/stable-diffusion-webui/data/models/LDSR
+      - ./Models/Lora:/stable-diffusion-webui/data/models/Lora
+      - ./Models/LyCORIS:/stable-diffusion-webui/data/models/LyCORIS
+      - ./Models/Checkpoints:/stable-diffusion-webui/data/models/Stable-diffusion
+      - ./Models/VAE:/stable-diffusion-webui/data/models/VAE
+      - ./Models/VAE-approx:/stable-diffusion-webui/data/models/VAE-approx
+      - ./Models/VAE-taesd:/stable-diffusion-webui/data/models/VAE-taesd
+      - ./Embeddings:/stable-diffusion-webui/embeddings
       - ./Automatic1111/outputs:/stable-diffusion-webui/outputs
   comfyui:
     build: ./build/comfyui
@@ -41,9 +52,18 @@ services:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - "7861:7861"
-      - "8166:8166"
     volumes:
       - ./ComfyUI/cache:/root/.cache
-      - ./ComfyUI/data:/comfyui/data
-      - ./ComfyUI/data/embeddings:/comfyui/embeddings
+      - ./Models/Codeformer:/comfyui/models/Codeformer
+      - ./Models/ESRGAN:/comfyui/models/ESRGAN
+      - ./Models/GFPGAN:/comfyui/models/GFPGAN
+      - ./Models/hypernetworks:/comfyui/models/hypernetworks
+      - ./Models/LDSR:/comfyui/models/LDSR
+      - ./Models/Lora:/comfyui/models/Lora
+      - ./Models/LyCORIS:/comfyui/models/LyCORIS
+      - ./Models/Checkpoints:/comfyui/models/checkpoints
+      - ./Models/VAE:/comfyui/models/VAE
+      - ./Models/VAE-approx:/comfyui/models/VAE-approx
+      - ./Models/VAE-taesd:/comfyui/models/VAE-taesd
+      - ./Embeddings:/comfyui/models/embeddings
       - ./ComfyUI/outputs:/comfyui/outputs
