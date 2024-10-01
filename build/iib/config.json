@@ -1,3 +1,4 @@
 {
-  "outdir_txt2img_samples": "/outputs"
+  "outdir_txt2img_samples": "/automatic1111",
+  "comfyui_output": "/comfyui"
 }
