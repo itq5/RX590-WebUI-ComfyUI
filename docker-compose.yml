@@ -66,4 +66,4 @@ services:
       - ./Models/VAE-approx:/comfyui/models/VAE-approx
       - ./Models/VAE-taesd:/comfyui/models/VAE-taesd
       - ./Embeddings:/comfyui/models/embeddings
-      - ./ComfyUI/outputs:/comfyui/outputs
+      - ./ComfyUI/outputs:/comfyui/output
