@@ -37,7 +37,7 @@ services:
       - ./Automatic1111/outputs:/stable-diffusion-webui/outputs
   comfyui:
     build: ./build/comfyui
-    command: "--listen --port 7861 --preview-method auto --use-split-cross-attention --fp16-vae"
+    command: "--listen --port 7861 --preview-method auto --use-split-cross-attention"
     # --use-quad-cross-attention --use-pytorch-cross-attention
     devices:
       - /dev/dri:/dev/dri
