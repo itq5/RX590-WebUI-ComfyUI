@@ -55,16 +55,16 @@ services:
       - "7861:7861"
     volumes:
       - ./ComfyUI/cache:/root/.cache
-      - ./Models/Codeformer:/comfyui/models/Codeformer
-      - ./Models/ESRGAN:/comfyui/models/ESRGAN
-      - ./Models/GFPGAN:/comfyui/models/GFPGAN
+      #- ./Models/Codeformer:/comfyui/models/Codeformer
+      #- ./Models/ESRGAN:/comfyui/models/ESRGAN
+      #- ./Models/GFPGAN:/comfyui/models/GFPGAN
       - ./Models/hypernetworks:/comfyui/models/hypernetworks
-      - ./Models/LDSR:/comfyui/models/LDSR
-      - ./Models/Lora:/comfyui/models/Lora
-      - ./Models/LyCORIS:/comfyui/models/LyCORIS
+      #- ./Models/LDSR:/comfyui/models/LDSR
+      - ./Models/Lora:/comfyui/models/loras
+      #- ./Models/LyCORIS:/comfyui/models/LyCORIS
       - ./Models/Checkpoints:/comfyui/models/checkpoints
-      - ./Models/VAE:/comfyui/models/VAE
-      - ./Models/VAE-approx:/comfyui/models/VAE-approx
-      - ./Models/VAE-taesd:/comfyui/models/VAE-taesd
+      - ./Models/VAE:/comfyui/models/vae
+      - ./Models/VAE-approx:/comfyui/models/vae_approx
+      #- ./Models/VAE-taesd:/comfyui/models/VAE-taesd
       - ./Embeddings:/comfyui/models/embeddings
       - ./ComfyUI/outputs:/comfyui/output
