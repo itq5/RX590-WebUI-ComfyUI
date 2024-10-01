@@ -79,4 +79,4 @@ services:
       - "7862:8000"
     volumes:
       - ./ComfyUI/outputs:/comfyui
-      - ./Automatic1111/data/outputs:/automatic1111
+      - ./Automatic1111/outputs:/automatic1111
