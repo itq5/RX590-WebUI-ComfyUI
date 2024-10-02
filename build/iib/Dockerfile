@@ -28,10 +28,9 @@ RUN which curl
 RUN which wget
 RUN which nano
 
-#COPY entry.sh /usr/local/sbin
+COPY entry.sh /usr/local/sbin
 # these are needed to make search work correctly
 #COPY config.json /
 RUN sed -i s_/root_/outputs_ /etc/passwd
 
-ENTRYPOINT ["python", "app.py"]
-CMD ["--extra_paths /automatic1111"]
+ENTRYPOINT [ "sh", "-c", "/usr/local/sbin/entry.sh" ]

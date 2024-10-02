@@ -73,7 +73,6 @@ services:
       - ./ComfyUI/outputs:/comfyui/output
   iib:
     build: ./build/iib
-    command: '--extra_paths /automatic1111 /comfyui'
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
