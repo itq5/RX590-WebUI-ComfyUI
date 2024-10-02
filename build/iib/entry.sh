@@ -40,4 +40,4 @@ echo
 
 
 echo launching app.py
-python app.py --port=$PORT --extra_paths=$EXTRA_PATHS --sd_webui_config="/config.json" $EXTRA_OPTIONS
+python app.py --port=$PORT --extra_paths="$EXTRA_PATHS" --sd_webui_config="/config.json" $EXTRA_OPTIONS
