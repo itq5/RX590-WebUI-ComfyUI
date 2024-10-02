@@ -80,4 +80,4 @@ services:
     volumes:
       - ./ComfyUI/outputs:/comfyui
       - ./Automatic1111/data/config.json:/config.json
-      - ./Automatic1111/outputs:/automatic1111
+      - ./Automatic1111/outputs:/root/git/sd-webui-infinite-image-browsing/outputs

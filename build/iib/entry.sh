@@ -13,7 +13,7 @@ fi
 
 ARG_EXTRA_PATHS=""
 if [ -z "$EXTRA_PATHS" ]; then
-  EXTRA_PATHS="/automatic1111 /comfyui"
+  EXTRA_PATHS="/comfyui"
 fi
 
 # display variables
