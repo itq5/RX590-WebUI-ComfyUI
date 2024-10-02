@@ -76,7 +76,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
-      - "7862:8000"
+      - "7862:8080"
     volumes:
       - ./ComfyUI/outputs:/comfyui
       - ./Automatic1111/data/config.json:/config.json
