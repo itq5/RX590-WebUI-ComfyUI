@@ -18,7 +18,7 @@ WORKDIR /root/git
 # check out stable diffusion
 RUN git clone https://github.com/zanllp/sd-webui-infinite-image-browsing.git
 WORKDIR sd-webui-infinite-image-browsing
-RUN git fetch && git checkout v1.1.0
+RUN git fetch && git checkout v1.2.0
 RUN pip install --upgrade pip && pip install -r requirements.txt && pip cache purge
 
 # build validation
