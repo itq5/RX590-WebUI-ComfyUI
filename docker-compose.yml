@@ -9,6 +9,7 @@ services:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
     ipc: host
+    restart: unlesss-stopped
     group_add: 
       - video
     cap_add:
@@ -39,6 +40,7 @@ services:
     build: ./build/comfyui
     command: "--listen --port 7861 --preview-method auto --use-quad-cross-attention"
     # --use-quad-cross-attention --use-pytorch-cross-attention
+    restart: unlesss-stopped
     devices:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
@@ -73,6 +75,7 @@ services:
       - ./ComfyUI/outputs:/comfyui/output
   iib:
     build: ./build/iib
+    restart: unlesss-stopped
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
