@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/var/cache/apt,rw --mount=type=cache,target=/var/l
 
 WORKDIR /
 
-RUN git clone --depth 1 -b "v1.10.0" https://github.7ii.win/https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui
+RUN git clone --depth 1 -b "v1.10.0" https://github.7ii.win/https://github.com/itq5/stable-diffusion-webui.git stable-diffusion-webui
 
 WORKDIR /stable-diffusion-webui
     
