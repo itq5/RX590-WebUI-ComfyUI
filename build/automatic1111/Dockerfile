@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/var/cache/apt,rw --mount=type=cache,target=/var/l
 
 WORKDIR /
 
-RUN git clone --depth 1 -b "v1.10.0" https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui
+RUN git clone --depth 1 -b "v1.10.0" https://github.7ii.win/https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui
 
 WORKDIR /stable-diffusion-webui
     
@@ -20,8 +20,8 @@ RUN python3 -m venv venv --system-site-packages
 
 RUN source venv/bin/activate
 
-RUN pip install -r requirements_versions.txt
-RUN pip install -r requirements.txt
+RUN pip install -r requirements_versions.txt --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+RUN pip install -r requirements.txt --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
 
 COPY rocm-xtra-setup.py .
 
