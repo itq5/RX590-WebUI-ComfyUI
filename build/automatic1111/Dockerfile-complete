@@ -1,5 +1,5 @@
 # 1. extracted from rocm-xtra-builder-rocblas
-FROM rocm/dev-ubuntu-22.04:5.5.1-complete as rocblas-builder
+FROM docker.7ii.win/rocm/dev-ubuntu-22.04:5.5.1-complete as rocblas-builder
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /src
 # downlode rocblas, tensile, rocSPARSE, Magma
