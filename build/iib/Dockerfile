@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM docker.7ii.win/python:3.10-slim-bullseye
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN /bin/echo -e '#!/bin/bash\nDEBIAN_FRONTEND=noninteractive\napt-get update && apt-get install -y $@ && apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/apt/lists/*' \
