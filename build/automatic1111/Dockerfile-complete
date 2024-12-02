@@ -4,18 +4,18 @@ ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /src
 # downlode rocblas, tensile, rocSPARSE, Magma
 RUN --mount=type=cache,target=/tmp/cache/download,rw \
-    curl -L -o /tmp/cache/download/rocBLAS-5.5.1.tar.gz https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.5.1.tar.gz \
+    curl -L -o /tmp/cache/download/rocBLAS-5.5.1.tar.gz https://github.7ii.win/https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.5.1.tar.gz \
     && tar -xf /tmp/cache/download/rocBLAS-5.5.1.tar.gz -C /src \
     && rm -f /tmp/cache/download/rocBLAS-5.5.1.tar.gz
 RUN --mount=type=cache,target=/tmp/cache/download,rw \
-    curl -L -o /tmp/cache/download/Tensile-5.5.1.tar.gz https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-5.5.1.tar.gz \
+    curl -L -o /tmp/cache/download/Tensile-5.5.1.tar.gz https://github.7ii.win/https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-5.5.1.tar.gz \
     && tar -xvf /tmp/cache/download/Tensile-5.5.1.tar.gz -C /src \
     && rm -f /tmp/cache/download/Tensile-5.5.1.tar.gz
 # fix gfx803
 RUN rm -rf /src/rocBLAS-rocm-5.5.1/library/src/blas3/Tensile/Logic/asm_full/r9nano*
 
 RUN --mount=type=cache,target=/tmp/cache/download,rw \
-    curl -L -o /tmp/cache/download/rocSPARSE-5.5.1.tar.gz https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.5.1.tar.gz \
+    curl -L -o /tmp/cache/download/rocSPARSE-5.5.1.tar.gz https://github.7ii.win/https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.5.1.tar.gz \
     && tar -xf /tmp/cache/download/rocSPARSE-5.5.1.tar.gz -C /src \
     && rm -f /tmp/cache/download/rocSPARSE-5.5.1.tar.gz
 
@@ -164,9 +164,9 @@ ENV PYTORCH_BUILD_NUMBER=1
 
 # prepare torch build
 ## torch deps
-RUN pip install astunparse numpy ninja pyyaml setuptools cmake cffi typing_extensions future six requests dataclasses
+RUN pip install astunparse numpy ninja pyyaml setuptools cmake cffi typing_extensions future six requests dataclasses --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
 
-RUN git clone --depth 1 --branch v2.0.1 --recursive https://github.com/pytorch/pytorch.git
+RUN git clone --depth 1 --branch v2.0.1 --recursive https://github.7ii.win/https://github.com/pytorch/pytorch.git
 
 # setup build dir
 RUN mkdir -p /build
@@ -187,16 +187,16 @@ RUN pip install --no-cache-dir /git/pytorch/dist/torch-*.whl
 # prepare torchvision build
 
 WORKDIR /git
-RUN git clone --depth 1 --branch v0.15.2 --recursive https://github.com/pytorch/vision.git
+RUN git clone --depth 1 --branch v0.15.2 --recursive https://github.7ii.win/https://github.com/pytorch/vision.git
 
-# https://github.com/pytorch/vision/issues/7561
+# https://github.7ii.win/https://github.com/pytorch/vision/issues/7561
 RUN patch -Np1 -d /git/vision -i /patches/torchvision-fix_ROCm_build.patch
 
 ## generate wheel
 WORKDIR /git/vision
 
 # fix bin/hipcc not found, because ROCM_HOME is lost
-# https://github.com/pytorch/vision/issues/6707#issuecomment-1269640873
+# https://github.7ii.win/https://github.com/pytorch/vision/issues/6707#issuecomment-1269640873
 ENV ROCM_HOME=/opt/rocm-5.5.1
 
 RUN TORCHVISION_USE_NVJPEG=0 \
@@ -210,7 +210,7 @@ ENV USE_FFMPEG=1
 
 # prepare torchaudio build
 WORKDIR /git
-RUN git clone --depth 1 --branch v2.0.2 --recursive https://github.com/pytorch/audio.git
+RUN git clone --depth 1 --branch v2.0.2 --recursive https://github.7ii.win/https://github.com/pytorch/audio.git
 
 # torchaudio deps
 WORKDIR /git/audio
@@ -234,11 +234,11 @@ RUN pip install --no-cache-dir /tmp/pytorch/torchaudio-*.whl
 RUN rm -f /tmp/pytorch/*.whl
 
 # install opencv
-RUN pip install --no-cache-dir opencv-python==4.8.0.76
+RUN pip install --no-cache-dir opencv-python==4.8.0.76 --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
 
 WORKDIR /
 
-RUN git clone --depth 1 -b "v1.6.0" https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui
+RUN git clone --depth 1 -b "v1.6.0" https://github.7ii.win/https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui
 
 WORKDIR /stable-diffusion-webui
     
