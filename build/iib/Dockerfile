@@ -16,12 +16,10 @@ RUN mkdir -p /root/git
 WORKDIR /root/git
 
 # check out stable diffusion
-RUN git clone https://github.com/zanllp/sd-webui-infinite-image-browsing.git
+RUN git clone https://github.7ii.win/https://github.com/zanllp/sd-webui-infinite-image-browsing.git
 WORKDIR sd-webui-infinite-image-browsing
 RUN git fetch && git checkout v1.2.0
-RUN pip install --upgrade pip && pip install -r requirements.txt && pip cache purge
-
-# build validation
+RUN pip install --upgrade pip  --index-url https://pypi.tuna.tsinghua.edu.cn/simple/ && pip install -r requirements.txt --index-url https://pypi.tuna.tsinghua.edu.cn/simple/ && pip cache purge
 RUN which ping
 RUN which netstat
 RUN which curl
